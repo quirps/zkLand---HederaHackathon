@@ -1,8 +1,8 @@
-# Decentralized Land Verification System — Hackathon MVP
+# Decentralized Land Verification System - Hackathon MVP
 
 ## Overview
 
-This project is a prototype for a **decentralized land verification system** designed to bring **trust, transparency, and verifiability** to land ownership processes — starting with **Buganda (Central Uganda)** as the pilot region.
+This project is a prototype for a **decentralized land verification system** designed to bring **trust, transparency, and verifiability** to land ownership processes - starting with **Buganda (Central Uganda)** as the pilot region.
 
 Our system combines a **React Native frontend** with an **Express + Postgres backend**, and later scales to a **fully on-chain model** using **Merkle proofs and zero-knowledge verification**. This MVP demonstrates how land credentials, authorities, and verification logic can transition from traditional databases to verifiable, decentralized infrastructure.
 
@@ -17,7 +17,7 @@ Our solution introduces a **progressive decentralization approach**:
 2. **Introduce verifiable registries** for authorities and credentials.
 3. **Integrate on-chain proof anchoring** using zk-SNARKs and Merkle commitments.
 
-Ultimately, this creates a **trustless proof of land authenticity** — usable by governments, banks, and individuals alike.
+Ultimately, this creates a **trustless proof of land authenticity** - usable by governments, banks, and individuals alike.
 
 ---
 
@@ -28,15 +28,14 @@ Ultimately, this creates a **trustless proof of land authenticity** — usable b
 * **Frontend:** React Native (Expo)
 * **Backend:** Express.js + PostgreSQL
 * **Containerization:** Docker Compose
-* **Database ORM:** Prisma (optional)
 * **Blockchain (Future Phase):** zk-SNARK-based proof verification and on-chain schema anchors
 
 **Key Modules**
 
-1. **Schema Registry** — Defines JSON schemas for credential types (e.g., “Buganda Land Title”)
-2. **Authority Registry** — Lists trusted signers (chiefs, registrars, surveyors)
-3. **zk Proof Fallback** — Provides a lightweight proof-verification fallback or mock verifier
-4. **Event Mirroring (Demo)** — Mimics blockchain verification events for visual dashboards
+1. **Schema Registry** - Defines JSON schemas for credential types (e.g., “Buganda Land Title”)
+2. **Authority Registry** - Lists trusted signers (chiefs, registrars, surveyors)
+3. **zk Proof Fallback** - Provides a lightweight proof-verification fallback or mock verifier
+4. **Event Mirroring (Demo)** - Mimics blockchain verification events for visual dashboards
 
 ---
 
@@ -63,10 +62,10 @@ The backend is minimal yet production-aligned:
 
 **Database Tables**
 
-* `schemas` — stores land credential types
-* `authorities` — stores signer and jurisdiction data
-* `proof_requests` — logs verification attempts and outcomes
-* `events` — stores blockchain-mirrored or mock event data
+* `schemas` - stores land credential types
+* `authorities` - stores signer and jurisdiction data
+* `proof_requests` - logs verification attempts and outcomes
+* `events` - stores blockchain-mirrored or mock event data
 
 ---
 
@@ -108,11 +107,11 @@ PORT=8080
 
 ## Future Extensions (Post-Hackathon)
 
-1. **On-chain schema anchoring** — store schema hashes on Ethereum/Optimism
-2. **zk-SNARK verification** — offload or parallelize proof generation (device or backend)
-3. **Proof persistence** — persist proof commitments and event logs on-chain
-4. **Multi-authority federation** — verifiable multi-signature credentials
-5. **Public dashboard** — open explorer for verified land credentials
+1. **On-chain schema anchoring** - store schema hashes on Ethereum/Optimism
+2. **zk-SNARK verification** - offload or parallelize proof generation (device or backend)
+3. **Proof persistence** - persist proof commitments and event logs on-chain
+4. **Multi-authority federation** - verifiable multi-signature credentials
+5. **Public dashboard** - open explorer for verified land credentials
 
 ---
 
@@ -121,4 +120,4 @@ PORT=8080
 Land verification touches the foundation of wealth, rights, and trust in many regions.
 This MVP demonstrates how a **verifiable, decentralized identity and land record system** can be both **accessible** and **trustless**, paving the way for a new era of digital property assurance.
 
-**"From land documents to verifiable proofs — transparency, from the ground up."**
+**"From land documents to verifiable proofs - transparency, from the ground up."**
