@@ -1,50 +1,124 @@
-# Welcome to your Expo app 👋
+# Decentralized Land Verification System — Hackathon MVP
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+## Overview
 
-## Get started
+This project is a prototype for a **decentralized land verification system** designed to bring **trust, transparency, and verifiability** to land ownership processes — starting with **Buganda (Central Uganda)** as the pilot region.
 
-1. Install dependencies
+Our system combines a **React Native frontend** with an **Express + Postgres backend**, and later scales to a **fully on-chain model** using **Merkle proofs and zero-knowledge verification**. This MVP demonstrates how land credentials, authorities, and verification logic can transition from traditional databases to verifiable, decentralized infrastructure.
 
-   ```bash
-   npm install
-   ```
+---
 
-2. Start the app
+## Vision
 
-   ```bash
-   npx expo start
-   ```
+Current land ownership systems rely on fragmented paper trails and unverified digital records.
+Our solution introduces a **progressive decentralization approach**:
 
-In the output, you'll find options to open the app in a
+1. **Start off-chain** for usability and rapid prototyping.
+2. **Introduce verifiable registries** for authorities and credentials.
+3. **Integrate on-chain proof anchoring** using zk-SNARKs and Merkle commitments.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+Ultimately, this creates a **trustless proof of land authenticity** — usable by governments, banks, and individuals alike.
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+---
 
-## Get a fresh project
+## Architecture
 
-When you're ready, run:
+**Stack Overview**
+
+* **Frontend:** React Native (Expo)
+* **Backend:** Express.js + PostgreSQL
+* **Containerization:** Docker Compose
+* **Database ORM:** Prisma (optional)
+* **Blockchain (Future Phase):** zk-SNARK-based proof verification and on-chain schema anchors
+
+**Key Modules**
+
+1. **Schema Registry** — Defines JSON schemas for credential types (e.g., “Buganda Land Title”)
+2. **Authority Registry** — Lists trusted signers (chiefs, registrars, surveyors)
+3. **zk Proof Fallback** — Provides a lightweight proof-verification fallback or mock verifier
+4. **Event Mirroring (Demo)** — Mimics blockchain verification events for visual dashboards
+
+---
+
+## Backend Design
+
+The backend is minimal yet production-aligned:
+
+* Built with **Express.js** (TypeScript or ES Modules)
+* Stores schemas, authorities, and proof requests in **PostgreSQL**
+* Ready for **containerized deployment** via Docker Compose
+* Enables **CORS** for seamless mobile interaction
+
+**Endpoints**
+
+| Route          | Method | Description                                     |
+| -------------- | ------ | ----------------------------------------------- |
+| `/schemas`     | GET    | Fetch all schemas                               |
+| `/schemas/:id` | GET    | Fetch a schema by ID                            |
+| `/schemas`     | POST   | Add a new credential schema                     |
+| `/authorities` | GET    | List all registered authorities                 |
+| `/authorities` | POST   | Add a new authority                             |
+| `/verify`      | POST   | Submit a proof (mock verification)              |
+| `/events`      | GET    | Retrieve historical or mock verification events |
+
+**Database Tables**
+
+* `schemas` — stores land credential types
+* `authorities` — stores signer and jurisdiction data
+* `proof_requests` — logs verification attempts and outcomes
+* `events` — stores blockchain-mirrored or mock event data
+
+---
+
+## Frontend Integration
+
+The frontend communicates with the backend via REST:
+
+* Loads credential schemas for land registration
+* Displays available verification authorities
+* Submits zk proofs or fallback verification requests
+* Displays event/verification history
+
+Future versions will integrate **on-chain verification modules** directly through smart contracts.
+
+---
+
+## Deployment
+
+**Local setup:**
 
 ```bash
-npm run reset-project
+docker-compose up --build
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+This launches both:
 
-## Learn more
+* PostgreSQL at port **5432**
+* Express backend at port **8080**
 
-To learn more about developing your project with Expo, look at the following resources:
+**Configuration:**
+Environment variables are defined in `.env`:
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+```
+DATABASE_URL=postgres://landapp:password@db:5432/landdb
+PORT=8080
+```
 
-## Join the community
+---
 
-Join our community of developers creating universal apps.
+## Future Extensions (Post-Hackathon)
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+1. **On-chain schema anchoring** — store schema hashes on Ethereum/Optimism
+2. **zk-SNARK verification** — offload or parallelize proof generation (device or backend)
+3. **Proof persistence** — persist proof commitments and event logs on-chain
+4. **Multi-authority federation** — verifiable multi-signature credentials
+5. **Public dashboard** — open explorer for verified land credentials
+
+---
+
+## Why This Matters
+
+Land verification touches the foundation of wealth, rights, and trust in many regions.
+This MVP demonstrates how a **verifiable, decentralized identity and land record system** can be both **accessible** and **trustless**, paving the way for a new era of digital property assurance.
+
+**"From land documents to verifiable proofs — transparency, from the ground up."**
